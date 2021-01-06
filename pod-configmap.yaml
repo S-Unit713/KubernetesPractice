@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: nginx
+spec: 
+  containers: 
+  - name: nginx
+    image: nginx
+    volumeMounts: 
+    - name: config-volume           # name of the config volume
+      mountPath: /etc/config
+  volumes: 
+  - name: config-volume
+    configMap:                      # configMap reference
+      name: dev-properties          # name of the configMap created using file dev.properties
+  restartPolicy: Never
