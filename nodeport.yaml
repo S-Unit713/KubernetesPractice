@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: sss-nodeport
+spec: 
+  selector: 
+    run: nginx    #To get response on the nodePort assigned to the worker node, You need to create a pod of image=nginx listening on the port 80 
+  type: NodePort
+  ports: 
+  - port: 8080
+    targetPort: 80
+
+
+
