@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: sss-networkpolicy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      run: pod01
+  policyTypes:
+  - Ingress                             # Blocking Traffic from the outside world to the pod
+  - Egress                              # Blocking Traffic from the pod to the outside world
