@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet                            #is like a global service in docker swarm - every node runs a copy of a pod
+metadata: 
+  name: sss-daemonset
+spec:
+  selector: 
+    matchLabels: 
+      name: sss-all-pods
+  template: 
+    metadata: 
+      labels: 
+        name: sss-all-pods
+    spec: 
+      containers: 
+      -  name: nginx
+         image: nginx:1.17.3
+         ports: 
+         - containerPort: 80
+         env: 
+         - name: Username
+           value: admin
+         - name: name
+           value: kubernetes
+           
