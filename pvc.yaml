@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+  name: pvc 
+spec: 
+  storageClassName: manual      # here you can specify if you want standard / managed-premium(fast) storage class
+  accessModes: 
+  -  ReadWriteOnce
+  resources: 
+    requests: 
+      storage: 1Gi              # the claim automatically gets bounded by the matched PV currently present 

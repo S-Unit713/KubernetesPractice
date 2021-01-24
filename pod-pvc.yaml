@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: sss-pvc
+spec: 
+  containers: 
+  - name: nginx
+    image: nginx:1.17.3
+    volumeMounts: 
+    - mountPath: "/data"
+      name: my-volume
+  volumes: 
+  - name: my-volume
+    persistentVolumeClaim:
+      claimName: pvc                    # this is where we refferenced the persistentVolumeClaim
